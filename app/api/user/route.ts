@@ -9,11 +9,11 @@ export const POST = async (req: NextRequest) => {
     email: string;
   };
 
-  const user = await prisma().user.create({ data: { email, name } });
+  const user = await prisma.user.create({ data: { email, name } });
   return NextResponse.json(user);
 };
 
 export const GET = async () => {
-  const users = await prisma().user.findMany();
+  const users = await prisma.user.findMany();
   return NextResponse.json(users);
 };
