@@ -1,6 +1,8 @@
 import prisma from "@/prisma/db";
 import { NextRequest, NextResponse } from "next/server";
 
+export const runtime = "edge";
+
 export const POST = async (req: NextRequest) => {
   const { name, email } = (await req.json()) satisfies {
     name: string;
