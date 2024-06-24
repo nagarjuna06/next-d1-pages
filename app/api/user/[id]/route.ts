@@ -1,13 +1,11 @@
 import prisma from "@/prisma/db";
 import { NextRequest, NextResponse } from "next/server";
 
-export const runtime = "edge";
-
 export const GET = async (
   req: NextRequest,
   { params: { id } }: { params: { id: string } }
 ) => {
-  const user = await prisma.user.findUnique({
+  const user = await prisma().user.findUnique({
     where: { id: parseInt(id) },
     include: { posts: true },
   });

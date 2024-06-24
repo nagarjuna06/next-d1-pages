@@ -1,8 +1,10 @@
 import { PrismaD1 } from "@prisma/adapter-d1";
-import { getRequestContext } from "@cloudflare/next-on-pages";
 import { PrismaClient } from "@prisma/client";
-const adapter = new PrismaD1(getRequestContext().env.DB);
+import { getRequestContext } from "@cloudflare/next-on-pages";
 
-const prisma = new PrismaClient({ adapter });
+const prisma = () => {
+  const adapter = new PrismaD1(getRequestContext().env.DB);
+  return new PrismaClient({ adapter });
+};
 
 export default prisma;
